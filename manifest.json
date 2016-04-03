@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Nyaa Magnet Links",
-  "version": "0.1.0",
+  "version": "0.1.1",
 
   "description": "Add magnet links on NyaaTorrents",
   "homepage_url": "https://github.com/Niamor/nyaa-magnet-links",
@@ -12,7 +12,7 @@
   "applications": {
     "gecko": {
       "id": "@nyaa-magnet-links",
-      "strict_min_version": "45.0.0"
+      "strict_min_version": "45.0"
     }
   },
 
