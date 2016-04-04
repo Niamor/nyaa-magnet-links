@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Nyaa Magnet Links",
-  "version": "0.1.1",
+  "version": "0.1.2",
 
   "description": "Add magnet links on NyaaTorrents",
   "homepage_url": "https://github.com/Niamor/nyaa-magnet-links",

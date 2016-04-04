@@ -1,9 +1,11 @@
 'use strict';
 
 const parseTorrent = require('parse-torrent');
+const url = document.URL;
 
-if (!location.search || location.search === -1 ||
-  location.search.indexOf('page=search') !== -1) {
+if (url.indexOf('page=search') !== -1 ||
+  url.indexOf('user=') !== -1 ||
+  url.indexOf('page=') === -1) {
   $(() => {
     $('[title="Download"]').each((i, el) => {
       const elem = $(el);
@@ -19,7 +21,7 @@ if (!location.search || location.search === -1 ||
       });
     });
   });
-} else if (location.search.indexOf('page=view') !== -1) {
+} else if (url.indexOf('page=view') !== -1) {
   const button = $('.viewdownloadbutton');
   parseTorrent.remote(location.protocol + button.find('a').attr('href'), (err, parsedTorrent) => {
     const magnetButton = $('<div/>', {
