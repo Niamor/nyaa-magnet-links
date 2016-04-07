@@ -35,8 +35,8 @@ $(() => {
       }).append($('<img/>', {
         src: chrome.extension.getURL('icons/magnet-16.png'),
         alt: 'Magnet'
-      })).click((e) => {
-        e.preventDefault();
+      })).click((event) => {
+        event.preventDefault();
         parseTorrent.remote(window.location.protocol + elem.attr('href'),
           (err, parsedTorrent) => {
             if (err) console.log(err);
@@ -49,19 +49,24 @@ $(() => {
     });
   } else if (url.indexOf('page=view') !== -1) {
     const button = $('.viewdownloadbutton');
-    parseTorrent.remote(window.location.protocol + button.find('a').attr('href'),
-      (err, parsedTorrent) => {
-        if (err) console.log(err);
-        const magnetButton = $('<div/>', {
-          class: 'viewdownloadbutton'
-        }).append($('<a/>', {
-          title: 'Magnet',
-          href: parseTorrent.toMagnetURI(parsedTorrent)
-        }).append($('<img/>', {
-          src: chrome.extension.getURL('icons/magnet-26.png'),
-          alt: 'Magnet'
-        })));
-        button.after(magnetButton);
-      });
+    const magnetButton = $('<div/>', {
+      class: 'viewdownloadbutton'
+    }).append($('<a/>', {
+      title: 'Magnet',
+      href: '#'
+    }).append($('<img/>', {
+      src: chrome.extension.getURL('icons/magnet-26.png'),
+      alt: 'Magnet'
+    }))).click((event) => {
+      event.preventDefault();
+      parseTorrent.remote(window.location.protocol + button.find('a').attr('href'),
+        (err, parsedTorrent) => {
+          if (err) console.log(err);
+          const magnetURI = parseTorrent.toMagnetURI(parsedTorrent);
+          magnetButton.find('a').attr('href', magnetURI);
+          window.location.href = magnetURI;
+        });
+    });
+    button.after(magnetButton);
   }
 });
