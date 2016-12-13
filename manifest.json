@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Nyaa Magnet Links",
-  "version": "0.2.0",
+  "version": "0.2.1",
 
   "description": "Add magnet links on NyaaTorrents",
   "homepage_url": "https://github.com/Niamor/nyaa-magnet-links",
@@ -9,16 +9,9 @@
     "48": "icons/magnet-48.png"
   },
 
-  "applications": {
-    "gecko": {
-      "id": "@nyaa-magnet-links",
-      "strict_min_version": "45.0"
-    }
-  },
-
   "content_scripts": [{
     "matches": ["*://*.nyaa.se/*"],
-    "js": ["lib/jquery-2.2.2.min.js", "lib/parse-torrent.min.js", "index.js"]
+    "js": ["lib/jquery-3.1.1.slim.min.js", "lib/parse-torrent.min.js", "index.js"]
   }],
 
   "web_accessible_resources": ["icons/magnet-16.png", "icons/magnet-26.png"]

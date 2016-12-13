@@ -20,8 +20,9 @@
 
 'use strict';
 
+/* global $, parseTorrent, browser */
+
 $(() => {
-  /* global $, parseTorrent, chrome */
   const url = document.URL;
 
   if (url.indexOf('page=search') !== -1 ||
@@ -33,7 +34,7 @@ $(() => {
         title: 'Magnet',
         href: '#'
       }).append($('<img/>', {
-        src: chrome.extension.getURL('icons/magnet-16.png'),
+        src: browser.extension.getURL('icons/magnet-16.png'),
         alt: 'Magnet'
       })).click((event) => {
         event.preventDefault();
@@ -55,7 +56,7 @@ $(() => {
       title: 'Magnet',
       href: '#'
     }).append($('<img/>', {
-      src: chrome.extension.getURL('icons/magnet-26.png'),
+      src: browser.extension.getURL('icons/magnet-26.png'),
       alt: 'Magnet'
     }))).click((event) => {
       event.preventDefault();
